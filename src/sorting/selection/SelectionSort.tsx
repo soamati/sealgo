@@ -14,15 +14,15 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import useInterval from "@/hooks/useInterval";
-import useBubbleSort from "./useBubbleSort";
 import { speeds } from "@/constants";
+import useSelectionSort from "./useSelectionSort";
 import MainLayout from "@/components/MainLayout";
 
-const BubbleSort = () => {
+const SelectionSort = () => {
   const [speed, setSpeed] = React.useState(5);
   const { data, generate } = useDataContext();
 
-  const { step, next, isDone, reset } = useBubbleSort(data.numbers);
+  const { step, next, isDone, reset } = useSelectionSort(data.numbers);
   const { start, pause, isActive } = useInterval(next, speeds[speed]);
 
   React.useEffect(() => {
@@ -90,15 +90,18 @@ const BubbleSort = () => {
                   rounded="sm"
                   key={idx}
                   h={`${(num / data.max) * 100}%`}
+                  flex="1"
                   bg={
-                    isDone || idx >= step.partial.length - step.sorted
+                    isDone || idx < step.swap
                       ? "green.400"
-                      : idx === step.compared.left ||
-                        idx === step.compared.right
+                      : idx === step.swap
+                      ? "red.400"
+                      : idx === step.pivot
+                      ? "orange.400"
+                      : idx === step.compared
                       ? "yellow.400"
                       : "gray.400"
                   }
-                  flex="1"
                 />
               ))}
             </Flex>
@@ -127,4 +130,4 @@ const BubbleSort = () => {
   );
 };
 
-export default BubbleSort;
+export default SelectionSort;
