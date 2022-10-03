@@ -6,24 +6,21 @@ import {
   HStack,
   Button,
   Center,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Text,
   Flex,
 } from "@chakra-ui/react";
 import useInterval from "@/hooks/useInterval";
 import useBubbleSort from "./useBubbleSort";
-import { speeds } from "@/constants";
 import MainLayout from "@/components/MainLayout";
+import SpeedControl from "@/components/SpeedControl";
+import { useSpeedContext } from "@/context/SpeedProvider";
 
 const BubbleSort = () => {
-  const [speed, setSpeed] = React.useState(5);
+  const { speed } = useSpeedContext();
   const { data, generate } = useDataContext();
 
   const { step, next, isDone, reset } = useBubbleSort(data.numbers);
-  const { start, pause, isActive } = useInterval(next, speeds[speed]);
+  const { start, pause, isActive } = useInterval(next, speed);
 
   React.useEffect(() => {
     if (isDone) {
@@ -60,25 +57,7 @@ const BubbleSort = () => {
           )}
         </HStack>
 
-        <Stack>
-          <Center>
-            <Text fontWeight="semibold">Velocidad</Text>
-          </Center>
-
-          <Slider
-            aria-label="speed-slider"
-            defaultValue={5}
-            min={0}
-            max={9}
-            step={1}
-            onChangeEnd={(value) => setSpeed(value)}
-          >
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
-        </Stack>
+        <SpeedControl />
       </Stack>
 
       <Center flex="1">

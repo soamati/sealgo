@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider, extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { DataProvider } from "./context/DataProvider";
+import { SpeedProvider } from "./context/SpeedProvider";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -15,7 +16,9 @@ const theme = extendTheme({ config });
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraProvider resetCSS theme={theme}>
     <DataProvider>
-      <App />
+      <SpeedProvider>
+        <App />
+      </SpeedProvider>
     </DataProvider>
   </ChakraProvider>
 );
