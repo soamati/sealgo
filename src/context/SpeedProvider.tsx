@@ -7,10 +7,10 @@ const speeds = {
   3: 700,
   4: 600,
   5: 500,
-  6: 400,
-  7: 300,
-  8: 200,
-  9: 100,
+  6: 200,
+  7: 100,
+  8: 50,
+  9: 10,
 };
 
 export type Level = keyof typeof speeds;
