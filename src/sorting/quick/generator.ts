@@ -8,6 +8,7 @@ type Pivot = {
 type Info = {
   swaps: number;
   comparisons: number;
+  placed: Map<number, number>;
 };
 
 type Step = {
@@ -38,6 +39,7 @@ function* placePivot(
     info.comparisons++;
   }
 
+  info.placed.set(pivot.position, pivot.value);
   yield { current, pivot, info };
 
   if (pivot.position !== start) {
@@ -52,7 +54,7 @@ function* quickGenerator(
   current: number[],
   start = 0,
   end = current.length - 1,
-  info = { swaps: 0, comparisons: 0 }
+  info = { swaps: 0, comparisons: 0, placed: new Map() }
 ): Generator<Step, null, unknown> {
   if (start < end) {
     const pivot = { value: 0, position: 0 };

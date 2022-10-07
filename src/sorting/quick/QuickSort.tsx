@@ -32,6 +32,23 @@ const QuickSort = () => {
     generate();
   };
 
+  const getColor = React.useCallback(
+    (index: number) => {
+      if (!step) return "gray.400";
+
+      return isDone
+        ? "green.400"
+        : step.info.placed.has(index)
+        ? "pink.400"
+        : index === step.pivot.position
+        ? "orange.400"
+        : step.compared && index === step.compared
+        ? "purple.400"
+        : "gray.400";
+    },
+    [step, isDone]
+  );
+
   return (
     <MainLayout>
       {/* Controls */}
@@ -65,7 +82,7 @@ const QuickSort = () => {
                   rounded="sm"
                   key={idx}
                   h={`${(num / data.max) * 100}%`}
-                  bg={isDone ? "green.400" : "gray.400"}
+                  bg={getColor(idx)}
                   flex="1"
                 />
               ))}
