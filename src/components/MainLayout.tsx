@@ -1,45 +1,55 @@
 import React, { PropsWithChildren } from "react";
-import { Flex, HStack, Button, Heading } from "@chakra-ui/react";
+import { Flex, HStack, Button, Heading, Stack } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 
-const MainLayout = ({ children }: PropsWithChildren) => {
+type Props = {
+  to: string;
+};
+
+const LinkItem = ({ children, to }: PropsWithChildren<Props>) => {
   const { pathname } = useLocation();
 
   return (
-    <Flex flexDir="column" minH="100vh" mx="auto" maxW="container.md" p="4">
-      <HStack justify="space-between" p="2" mb="4">
+    <Link to={to}>
+      <Button
+        size="sm"
+        variant="ghost"
+        colorScheme={pathname === to ? "yellow" : "gray"}
+        isDisabled={to === "/quick"}
+      >
+        {children}
+      </Button>
+    </Link>
+  );
+};
+
+const MainLayout = ({ children }: PropsWithChildren) => {
+  return (
+    <Flex
+      flexDir="column"
+      minH="100vh"
+      mx="auto"
+      maxW="container.md"
+      p={["2", "4"]}
+    >
+      <Stack
+        direction={["column", "column", "row"]}
+        align="center"
+        justify="space-between"
+        p="2"
+        spacing="8"
+        mb="8"
+      >
         <Heading size="sm">sealgo 🧪</Heading>
 
-        <HStack>
-          <Link to="/bubble">
-            <Button
-              size="sm"
-              variant="ghost"
-              colorScheme={pathname === "/bubble" ? "blue" : "gray"}
-            >
-              bubble
-            </Button>
-          </Link>
-          <Link to="/selection">
-            <Button
-              size="sm"
-              variant="ghost"
-              colorScheme={pathname === "/selection" ? "blue" : "gray"}
-            >
-              selection
-            </Button>
-          </Link>
-          <Link to="/insertion">
-            <Button
-              size="sm"
-              variant="ghost"
-              colorScheme={pathname === "/insertion" ? "blue" : "gray"}
-            >
-              insertion
-            </Button>
-          </Link>
+        <HStack flexWrap="wrap" justify="center" align="center">
+          <LinkItem to="/bubble">bubble</LinkItem>
+          <LinkItem to="/selection">selection</LinkItem>
+          <LinkItem to="/insertion">insertion</LinkItem>
+          <LinkItem to="/merge">merge</LinkItem>
+          <LinkItem to="/quick">quick</LinkItem>
         </HStack>
-      </HStack>
+      </Stack>
 
       {children}
     </Flex>

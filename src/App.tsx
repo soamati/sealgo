@@ -2,6 +2,7 @@ import React from "react";
 import BubbleSort from "./sorting/bubble/BubbleSort";
 import SelectionSort from "./sorting/selection/SelectionSort";
 import InsertionSort from "./sorting/insertion/InsertionSort";
+import MergeSort from "./sorting/merge/MegeSort";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/insertion",
     element: <InsertionSort />,
+  },
+  {
+    path: "/merge",
+    element: <MergeSort />,
   },
 ]);
 

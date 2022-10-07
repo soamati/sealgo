@@ -11,7 +11,16 @@ const config: ThemeConfig = {
   useSystemColorMode: false,
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  components: {
+    Button: {
+      defaultProps: {
+        size: ["sm", "md"],
+      },
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraProvider resetCSS theme={theme}>
