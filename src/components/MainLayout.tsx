@@ -1,6 +1,17 @@
 import React, { PropsWithChildren } from "react";
-import { Flex, HStack, Button, Heading, Stack } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  Button,
+  Heading,
+  Stack,
+  Center,
+  Text,
+  Icon,
+} from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import { Linkedin, GitHub } from "react-feather";
+import ExternalLink from "./ExternalLink";
 
 type Props = {
   to: string;
@@ -26,7 +37,8 @@ const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <Flex
       flexDir="column"
-      minH="100vh"
+      h="100vh"
+      minH="min-content"
       mx="auto"
       maxW="container.md"
       p={["2", "4"]}
@@ -39,7 +51,9 @@ const MainLayout = ({ children }: PropsWithChildren) => {
         spacing="8"
         mb="8"
       >
-        <Heading size="sm">sealgo 🧪</Heading>
+        <Link to="/">
+          <Heading size="sm">sealgo 🧪</Heading>
+        </Link>
 
         <HStack flexWrap="wrap" justify="center" align="center">
           <LinkItem to="/bubble">bubble</LinkItem>
@@ -51,6 +65,20 @@ const MainLayout = ({ children }: PropsWithChildren) => {
       </Stack>
 
       {children}
+
+      <Center mt="12">
+        <Stack>
+          <Text>Matias Ruiz</Text>
+          <HStack justify="center" spacing="4">
+            <ExternalLink href="https://github.com/soamati">
+              <Icon as={Linkedin} />
+            </ExternalLink>
+            <ExternalLink href="https://linkedin.com/in/matiruizsh/">
+              <Icon as={GitHub} />
+            </ExternalLink>
+          </HStack>
+        </Stack>
+      </Center>
     </Flex>
   );
 };

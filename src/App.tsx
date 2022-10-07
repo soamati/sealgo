@@ -5,11 +5,13 @@ import InsertionSort from "./sorting/insertion/InsertionSort";
 import MergeSort from "./sorting/merge/MegeSort";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import QuickSort from "./sorting/quick/QuickSort";
+import ErrorElement from "./components/ErrorElement";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <BubbleSort />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/bubble",

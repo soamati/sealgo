@@ -58,7 +58,7 @@ const InsertionSort = () => {
 
   return (
     <MainLayout>
-      <Stack spacing="4">
+      <Stack spacing="4" mb="8">
         <HStack justify="space-between">
           <Button onClick={onGenerate}>Generar</Button>
 
