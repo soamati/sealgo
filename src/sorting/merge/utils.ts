@@ -1,8 +1,3 @@
-type StepData = {
-  side: "left" | "right" | "final";
-  partition: number;
-};
-
 export function split<T>(arr: T[]) {
   const mid = Math.floor(arr.length / 2);
   return [arr.slice(0, mid), arr.slice(mid)];
