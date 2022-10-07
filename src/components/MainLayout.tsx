@@ -15,7 +15,6 @@ const LinkItem = ({ children, to }: PropsWithChildren<Props>) => {
         size="sm"
         variant="ghost"
         colorScheme={pathname === to ? "yellow" : "gray"}
-        isDisabled={to === "/quick"}
       >
         {children}
       </Button>

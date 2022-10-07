@@ -4,6 +4,7 @@ import SelectionSort from "./sorting/selection/SelectionSort";
 import InsertionSort from "./sorting/insertion/InsertionSort";
 import MergeSort from "./sorting/merge/MegeSort";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import QuickSort from "./sorting/quick/QuickSort";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/merge",
     element: <MergeSort />,
+  },
+  {
+    path: "/quick",
+    element: <QuickSort />,
   },
 ]);
 
