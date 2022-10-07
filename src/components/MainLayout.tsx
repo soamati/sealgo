@@ -66,7 +66,7 @@ const MainLayout = ({ children }: PropsWithChildren) => {
 
       {children}
 
-      <Center mt="12" mb="2">
+      <Center mt="12">
         <Stack>
           <Text>Matias Ruiz</Text>
           <HStack justify="center" spacing="4">
