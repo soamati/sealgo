@@ -70,10 +70,10 @@ const MainLayout = ({ children }: PropsWithChildren) => {
         <Stack>
           <Text>Matias Ruiz</Text>
           <HStack justify="center" spacing="4">
-            <ExternalLink href="https://github.com/soamati">
+            <ExternalLink href="https://linkedin.com/in/matiruizsh/">
               <Icon as={Linkedin} />
             </ExternalLink>
-            <ExternalLink href="https://linkedin.com/in/matiruizsh/">
+            <ExternalLink href="https://github.com/soamati">
               <Icon as={GitHub} />
             </ExternalLink>
           </HStack>
