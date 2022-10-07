@@ -1,19 +1,13 @@
 import React from "react";
 import { useDataContext } from "@/context/DataProvider";
 import { useSpeedContext } from "@/context/SpeedProvider";
-import {
-  Box,
-  Stack,
-  HStack,
-  Button,
-  Center,
-  Flex,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Stack, HStack, Button, Center, Flex } from "@chakra-ui/react";
 import useInterval from "@/hooks/useInterval";
 import useInsertionSort from "./useInsertionSort";
 import MainLayout from "@/components/MainLayout";
 import SpeedControl from "@/components/SpeedControl";
+import TextArray from "@/components/TextArray";
+import SortingInfo from "@/components/SortingInfo";
 
 const InsertionSort = () => {
   const { speed } = useSpeedContext();
@@ -66,7 +60,7 @@ const InsertionSort = () => {
     <MainLayout>
       <Stack spacing="4">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar arreglo</Button>
+          <Button onClick={onGenerate}>Generar</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
@@ -117,12 +111,19 @@ const InsertionSort = () => {
             </Flex>
           )}
 
-          <HStack justify="space-between">
-            <Text fontWeight="semibold">
-              Comparaciones: {step ? step.comparisons : 0}
-            </Text>
-            <Text fontWeight="semibold">Cambios: {step ? step.swaps : 0}</Text>
-          </HStack>
+          <SortingInfo
+            items={[
+              { legend: "Comparaciones", value: step ? step.comparisons : 0 },
+              { legend: "Cambios", value: step ? step.swaps : 0 },
+            ]}
+          />
+
+          <Stack>
+            <TextArray
+              data={step ? step.partial : data.numbers}
+              color={isDone ? "green.400" : step ? "yellow.400" : "gray.100"}
+            />
+          </Stack>
         </Stack>
       </Center>
     </MainLayout>

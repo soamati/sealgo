@@ -20,10 +20,12 @@ const initialData: Data = {
   max: 0,
 };
 
+const SIZE = 30;
+
 export const DataProvider = ({ children }: PropsWithChildren) => {
   const [data, setData] = React.useState<Data>(initialData);
 
-  const generate = React.useCallback((size = 20) => {
+  const generate = React.useCallback((size = SIZE) => {
     const numbers: number[] = [];
     for (let i = 0; i < size; i++) {
       numbers[i] = boundedRandom(1, 100);
@@ -35,7 +37,7 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   React.useEffect(() => {
-    generate(20);
+    generate(SIZE);
   }, [generate]);
 
   return (

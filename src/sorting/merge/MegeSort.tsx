@@ -1,19 +1,13 @@
 import React from "react";
 import { useDataContext } from "@/context/DataProvider";
-import {
-  Box,
-  Stack,
-  HStack,
-  Button,
-  Flex,
-  Text,
-  Center,
-} from "@chakra-ui/react";
+import { Box, Stack, HStack, Button, Flex, Center } from "@chakra-ui/react";
 import useInterval from "@/hooks/useInterval";
 import SpeedControl from "@/components/SpeedControl";
 import { useSpeedContext } from "@/context/SpeedProvider";
 import useMergeSort from "./useMergeSort";
 import MainLayout from "@/components/MainLayout";
+import TextArray from "@/components/TextArray";
+import SortingInfo from "@/components/SortingInfo";
 
 const MergeSort = () => {
   const { speed } = useSpeedContext();
@@ -58,7 +52,7 @@ const MergeSort = () => {
       {/* Controls */}
       <Stack spacing="4">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar arreglo</Button>
+          <Button onClick={onGenerate}>Generar</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
@@ -112,14 +106,19 @@ const MergeSort = () => {
           )}
 
           {/* Info */}
-          <HStack justify="space-between">
-            <Text fontWeight="semibold">
-              Comparaciones: {step ? step.comparisons : 0}
-            </Text>
-            <Text fontWeight="semibold">
-              Particiones: {step ? step.partial.length : 0}
-            </Text>
-          </HStack>
+          <SortingInfo
+            items={[
+              { legend: "Comparaciones", value: step ? step.comparisons : 0 },
+              { legend: "Particiones", value: step ? step.partial.length : 0 },
+            ]}
+          />
+
+          <Stack>
+            <TextArray
+              data={step ? step.partial.flat() : data.numbers}
+              color={isDone ? "green.400" : step ? "yellow.400" : "gray.100"}
+            />
+          </Stack>
         </Stack>
       </Center>
     </MainLayout>
