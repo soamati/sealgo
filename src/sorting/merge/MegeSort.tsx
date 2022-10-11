@@ -10,11 +10,15 @@ import TextArray from "@/components/TextArray";
 import SortingInfo from "@/components/SortingInfo";
 
 const MergeSort = () => {
-  const { speed } = useSpeedContext();
+  const { speed, resetLevel } = useSpeedContext();
   const { data, generate } = useDataContext();
 
   const { step, next, isDone, reset } = useMergeSort(data.numbers);
   const { start, pause, isActive } = useInterval(next, speed);
+
+  React.useEffect(() => {
+    resetLevel();
+  }, [resetLevel]);
 
   React.useEffect(() => {
     if (isDone) {

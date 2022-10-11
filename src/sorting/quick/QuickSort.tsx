@@ -10,11 +10,15 @@ import SortingInfo from "@/components/SortingInfo";
 import useQuickSort from "./useQuickSort";
 
 const QuickSort = () => {
-  const { speed } = useSpeedContext();
+  const { speed, resetLevel } = useSpeedContext();
   const { data, generate } = useDataContext();
 
   const { step, next, isDone, reset } = useQuickSort(data.numbers);
   const { start, pause, isActive } = useInterval(next, speed);
+
+  React.useEffect(() => {
+    resetLevel();
+  }, [resetLevel]);
 
   React.useEffect(() => {
     if (isDone) {

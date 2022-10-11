@@ -19,6 +19,7 @@ type Context = {
   speed: number;
   level: Level;
   setLevel: (level: Level) => void;
+  resetLevel: () => void;
 };
 
 const SpeedContext = React.createContext<Context | null>(null);
@@ -27,8 +28,12 @@ export const SpeedProvider = ({ children }: PropsWithChildren) => {
   const [level, setLevel] = React.useState<Level>(7);
   const speed = React.useMemo(() => speeds[level], [level]);
 
+  const resetLevel = React.useCallback(() => {
+    setLevel(7);
+  }, []);
+
   return (
-    <SpeedContext.Provider value={{ speed, level, setLevel }}>
+    <SpeedContext.Provider value={{ speed, level, setLevel, resetLevel }}>
       {children}
     </SpeedContext.Provider>
   );
