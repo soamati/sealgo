@@ -56,17 +56,17 @@ const MergeSort = () => {
       {/* Controls */}
       <Stack spacing="4" mb="8">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar</Button>
+          <Button onClick={onGenerate}>Generate</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
           ) : !isActive ? (
             <Button onClick={start} colorScheme="green">
-              Ordernar
+              Sort
             </Button>
           ) : (
             <Button onClick={pause} colorScheme="red">
-              Pausa
+              Pause
             </Button>
           )}
         </HStack>
@@ -112,8 +112,8 @@ const MergeSort = () => {
           {/* Info */}
           <SortingInfo
             items={[
-              { legend: "Comparaciones", value: step ? step.comparisons : 0 },
-              { legend: "Particiones", value: step ? step.partial.length : 0 },
+              { legend: "Comparisons", value: step ? step.comparisons : 0 },
+              { legend: "Partitions", value: step ? step.partial.length : 0 },
             ]}
           />
 

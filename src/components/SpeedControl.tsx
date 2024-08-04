@@ -16,7 +16,7 @@ const SpeedControl = () => {
   return (
     <Stack>
       <Center>
-        <Text fontWeight="semibold">Velocidad</Text>
+        <Text fontWeight="semibold">Speed</Text>
       </Center>
 
       <Slider

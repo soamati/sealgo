@@ -6,7 +6,7 @@ const ErrorElement = () => {
   return (
     <MainLayout>
       <Center flex="1">
-        <Text>No encontramos lo que buscabas</Text>
+        <Text>{"We didn't find what you were looking for"}</Text>
       </Center>
     </MainLayout>
   );

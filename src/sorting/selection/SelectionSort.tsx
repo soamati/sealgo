@@ -40,17 +40,17 @@ const SelectionSort = () => {
     <MainLayout>
       <Stack spacing="4" mb="8">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar</Button>
+          <Button onClick={onGenerate}>Generate</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
           ) : !isActive ? (
             <Button onClick={start} colorScheme="green">
-              Ordernar
+              Sort
             </Button>
           ) : (
             <Button onClick={pause} colorScheme="red">
-              Pausa
+              Pause
             </Button>
           )}
         </HStack>
@@ -97,8 +97,8 @@ const SelectionSort = () => {
 
           <SortingInfo
             items={[
-              { legend: "Comparaciones", value: step ? step.comparisons : 0 },
-              { legend: "Cambios", value: step ? step.swaps : 0 },
+              { legend: "Comparisons", value: step ? step.comparisons : 0 },
+              { legend: "Swaps", value: step ? step.swaps : 0 },
             ]}
           />
 

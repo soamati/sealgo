@@ -58,17 +58,17 @@ const QuickSort = () => {
       {/* Controls */}
       <Stack spacing="4" mb="8">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar</Button>
+          <Button onClick={onGenerate}>Generate</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
           ) : !isActive ? (
             <Button onClick={start} colorScheme="green">
-              Ordernar
+              Sort
             </Button>
           ) : (
             <Button onClick={pause} colorScheme="red">
-              Pausa
+              Pause
             </Button>
           )}
         </HStack>
@@ -108,10 +108,10 @@ const QuickSort = () => {
           <SortingInfo
             items={[
               {
-                legend: "Comparaciones",
+                legend: "Comparisons",
                 value: step ? step.info.comparisons : 0,
               },
-              { legend: "Cambios", value: step ? step.info.swaps : 0 },
+              { legend: "Swaps", value: step ? step.info.swaps : 0 },
             ]}
           />
 

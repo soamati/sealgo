@@ -41,17 +41,17 @@ const BubbleSort = () => {
       {/* Controls */}
       <Stack spacing="4" mb="8">
         <HStack justify="space-between">
-          <Button onClick={onGenerate}>Generar</Button>
+          <Button onClick={onGenerate}>Generate</Button>
 
           {isDone ? (
             <Button onClick={onReset}>Reiniciar</Button>
           ) : !isActive ? (
             <Button onClick={start} colorScheme="green">
-              Ordernar
+              Sort
             </Button>
           ) : (
             <Button onClick={pause} colorScheme="red">
-              Pausa
+              Pause
             </Button>
           )}
         </HStack>
@@ -73,9 +73,9 @@ const BubbleSort = () => {
                     isDone || idx >= step.partial.length - step.sorted
                       ? "green.400"
                       : idx === step.compared.left ||
-                        idx === step.compared.right
-                      ? "yellow.400"
-                      : "gray.400"
+                          idx === step.compared.right
+                        ? "yellow.400"
+                        : "gray.400"
                   }
                   flex="1"
                 />
@@ -97,8 +97,8 @@ const BubbleSort = () => {
           {/* Info */}
           <SortingInfo
             items={[
-              { legend: "Comparaciones", value: step ? step.comparisons : 0 },
-              { legend: "Cambios", value: step ? step.swaps : 0 },
+              { legend: "Comparisons", value: step ? step.comparisons : 0 },
+              { legend: "Swaps", value: step ? step.swaps : 0 },
             ]}
           />
 
